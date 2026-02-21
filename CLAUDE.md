@@ -1,8 +1,65 @@
-# Project Name
+# YouTube Script: MFM and Bit Patterned Media
 
 ## プロジェクト概要
 
-プロジェクトの概要を記載します。
+MFM（磁気力顕微鏡）の測定原理と、ビットパターンドメディア（BPM）について解説するYouTube動画の脚本を制作するプロジェクトです。磁気記録技術の次世代を担うBPMの仕組みと、それを観察・評価するMFMの原理を、学部生にもわかりやすく解説します。
+
+### テーマ
+
+「MFMとビットパターンドメディア - ナノスケールで磁石を"見る"技術と次世代磁気記録」
+
+### 主要トピック
+
+- **MFMの測定原理**: AFM（原子間力顕微鏡）をベースとした磁気力の検出メカニズム、磁化探針の役割
+- **MFMの動作モード**: リフトモード、位相検出、周波数変調など
+- **ビットパターンドメディア（BPM）**: 従来の連続薄膜メディアとの違い、1Tb/in²超の記録密度への挑戦
+- **BPMの製造技術**: ナノインプリントリソグラフィ（NIL）、電子ビームリソグラフィ（EBL）
+- **MFMによるBPMの評価**: 個別ビット島の磁化反転観察、スイッチングフィールド分布（SFD）の測定
+
+### 参考資料
+
+- **BPM論文**: Chen, Y.J. et al. (2010) "Individual bit island reversal and switching field distribution in perpendicular magnetic bit patterned media." Journal of Magnetism and Magnetic Materials.
+  - DOI: 10.1016/j.jmmm.2010.11.094
+  - 場所: `docs/BPM_JMMM_online101214.pdf`
+- **NILレビュー論文**: Oh, D.K. et al. (2021) "Nanoimprint lithography for high-throughput fabrication of metasurfaces." Frontiers of Optoelectronics, 14(2), 229-251.
+  - DOI: 10.1007/s12200-021-1121-8
+  - 場所: `docs/12200_2021_Article_1121.pdf`
+
+## ディレクトリ構造
+
+```text
+yt-script-mfm-and-bpm/
+├── CLAUDE.md                 # プロジェクト設定・開発ルール
+├── README.md                 # プロジェクト概要
+├── Makefile                  # ビルドコマンド
+├── docs/                     # 参考文献（バージョニング対象外）
+│   └── *.pdf                 # MFM・BPM関連の学術論文
+├── instructions/             # 制作ガイドライン
+│   ├── video_concept.md      # 動画コンセプト（10-20分、1動画1テーマ）
+│   └── youtube_script_guidelines.md  # YouTube脚本ガイドライン（TTS変換含む）
+├── slides-jp/                # スライド・動画関連（Reveal.js）
+│   ├── index.html            # メインスライド
+│   ├── script-outline.md     # 動画脚本のアウトライン
+│   ├── yt_script.md          # YouTube動画脚本（予定）
+│   ├── css/                  # スタイルシート
+│   ├── assets/               # 画像等のアセット
+│   └── dist/                 # Reveal.jsビルド成果物
+├── descriptions/             # 動画の概要欄
+│   └── youtube_description.md  # YouTube概要欄（日本語）
+├── captions/                 # 字幕（予定）
+│   └── mfm-and-bpm-jp.srt   # 日本語字幕（予定）
+└── .github/                  # GitHubテンプレート
+```
+
+## 動画フォーマット
+
+- **尺**: 10〜20分程度
+- **構成**: 1動画1テーマ
+- **スタイル**: 短く、濃く、わかりやすく
+- **ターゲット**: 理工系の学部生、大学院生、研究者、社会人
+- **コンセプト**: 学部1-2回生程度の前提知識で物理や技術をわかりやすく平易に伝える
+
+詳細は `instructions/video_concept.md` を参照。
 
 ## 言語設定
 
@@ -17,6 +74,14 @@
 - クラス名: PascalCase
 - 定数: UPPER_SNAKE_CASE
 - Docstring: Google Style
+
+### Manimアニメーション
+
+- アニメーション内のテキスト・ラベルは**日英併記**とする
+  - 国際的な視聴者にも理解できるよう、日本語と英語を併記する
+- テロップは**簡潔に核心を伝える**ものとする
+  - 冗長な説明は避け、要点を端的に表現する
+  - ナレーションの補助として機能させる
 
 ## Git運用
 
@@ -65,3 +130,15 @@
 
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
+
+## 脚本制作ガイドライン
+
+脚本作成時は `instructions/youtube_script_guidelines.md` を参照。
+
+### 主なポイント
+
+- 話し言葉として書く（「読む」ではなく「聴く」ための最適化）
+- 一文は20〜30文字程度
+- 句読点による自然な間
+- Audio Tags（ElevenLabs v3用）の活用
+- 専門用語には補足説明を付ける
